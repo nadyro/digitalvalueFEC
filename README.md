@@ -13,7 +13,7 @@ We don't expect you to be an expert designer, but we want to see if you're comfo
 ## Guidelines
 
 - Clone the repo
-- Implement each level in ascending order
+- Implement each level in ascending order (last two levels are optional)
 - Commit at the end of each level
 - Provide instructions to run each level of the challenge
 - Host the last level of the challenge
