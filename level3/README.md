@@ -6,4 +6,4 @@ We want to have a better indicator to understand the evolution of the online dem
 
 Let's calculate and display the average search volume of the selected category in the selected period and its evolution regarding the same period one year ago.
 
-Then go to [next level](https://github.com/digital-value-apps/frontend-challenge/tree/master/level4)
+Then go to [next level](https://github.com/digital-value-apps/frontend-challenge/tree/master/level4) (optional)
