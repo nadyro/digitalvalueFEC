@@ -2,7 +2,7 @@
 
 Now we can log in and log out, we should allow your users to recover their selection when the come back to the application.
 
-# Level 5 - Persist user selection
+# Level 5 - Persist user selection (optional)
 
 Implement a way to persist the application state between 2 sessions of the user with the same browser.
 
