@@ -20,7 +20,6 @@ We don't expect you to be an expert designer, but we want to see if you're comfo
 
 ## Rules
 
-- Responsive layout
 - Angular is preferred but React or Vue.js is also accepted
 - Use version control to deliver the test
 - You can use any libs (JavaScript and CSS)
