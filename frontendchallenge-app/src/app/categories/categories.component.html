@@ -1,0 +1,11 @@
+<div class="home_categories">
+    <div *ngFor="let entities of arrayCategories">
+        {{entities.name}}
+        <div *ngFor="let categories of entities.children">
+            {{categories.name}}
+            <div *ngFor="let category of categories.children">
+                {{category.name}}
+            </div>
+        </div>
+    </div>
+</div>

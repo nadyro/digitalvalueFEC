@@ -1,0 +1,65 @@
+<div class="header container">
+
+  <div class="header_element signin col-3">
+    <p>Login</p>
+  </div>
+  <div class="header_element col-6"></div>
+  <div class="header_element signup col-3">
+    <p>Signup</p>
+  </div>
+</div>
+
+<div class="title">
+  <h1>G.O.D</h1>
+  <h2>
+    Google's Original Dataviz
+  </h2>
+</div>
+
+<div class="home container">
+  <h5>
+      Evolution of the search volume for the top-level category from 2016 to nowadays.
+  </h5>
+  <div class="volumes_container volumes_container_years col-6">
+    <h3>Yearly research volumes</h3>
+
+    <div class="number_graph number_graph_bottom">
+      <p>{{maxVolumesYears}}</p>
+    </div>
+    <div class="number_graph number_graph_center">
+      <p>{{maxVolumesYears / 2}}</p>
+    </div>
+    <div class="number_graph number_graph_top">
+      <p>0</p>
+    </div>
+
+    <div #volumes_year (dblclick)="selectPeriod(volumes_year)" (click)="appendDetailedVolumes(volumes_year)" id="{{yearVolume.index}}"
+      class="volumes" *ngFor="let yearVolume of volumes_sum_year" [style.height.px]="yearVolume.sum / 5000">
+      <div class="overlay"></div>
+      <p class="volumeYear">{{yearVolume.year}}</p>
+    </div>
+
+  </div>
+
+  <div class="volumes_container volumes_container_per_year col-6">
+    <h3>Monthly research volumes</h3>
+
+    <div class="number_graph_per_year number_graph_bottom">
+      <p>{{maxVolumesPerYear}}K</p>
+    </div>
+    <div class="number_graph_per_year number_graph_center">
+      <p>{{maxVolumesPerYear / 2}}K</p>
+    </div>
+    <div class="number_graph_per_year number_graph_top">
+      <p>0</p>
+    </div>
+
+    <div *ngIf="volumes_per_year[indexToDisplayVolumes]">
+      <div class="volumes" [style.height.px]="volume_year.volume" *ngFor="let volume_year of volumes_per_year[indexToDisplayVolumes].volumes_height">
+        <div class="overlay"></div>
+        <p>{{volume_year.month}}</p>
+      </div>
+
+    </div>
+  </div>
+</div>
