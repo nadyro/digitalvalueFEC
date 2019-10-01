@@ -1,1 +1,13 @@
+<div class="header container">
+  <div class="header_element signin col-3 col-md-3 col-sm-3">
+    <p routerLink="/categories">Categories</p>
+  </div>
+  <div class="header_element col-6 col-md-6 col-sm-6"></div>
+  <div class="header_element signup col-3 col-md-3 col-sm-3" *ngIf="!authService.isLoggedIn">
+    <p routerLink="/categories">Login</p>
+  </div>
+  <div class="header_element signup col-3 col-md-3 col-sm-3" *ngIf="authService.isLoggedIn">
+    <p routerLink="/" (click)="logout()">Log out</p>
+  </div>
+</div>
 <router-outlet></router-outlet>

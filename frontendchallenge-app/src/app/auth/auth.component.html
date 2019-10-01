@@ -1,0 +1,26 @@
+<div class="auth container">
+    <div class="auth_children login">
+        <h5>Log in to continue your adventure !</h5>
+        <form [formGroup]="authLoginForm" (ngSubmit)="onSubmit(2)">
+            <div class="form-group">
+                <label>
+                    Email :
+                    <input type="text" formControlName="email" class="form-control auth_child">
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    Password :
+                    <input type="password" formControlName="password" class="form-control auth_child">
+                </label>
+            </div>
+            <button type="submit" [disabled]="!authLoginForm.valid" class="btn btn-primary auth_submit">Submit</button>
+        </form>
+        <div class="to_subscribe" *ngIf="!authService.isLoggedIn">
+            <p>
+                First time among us ?
+                <a #login routerLink="/" routerLinkActive="active">Sign up</a>
+            </p>
+        </div>
+    </div>
+</div>

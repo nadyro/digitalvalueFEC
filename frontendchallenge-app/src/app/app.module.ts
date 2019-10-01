@@ -11,15 +11,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 //Components
 import { AppComponent } from './app.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { AuthComponent } from './auth/auth.component';
+import { GraphsComponent } from './graphs/graphs.component';
+import { AverageHoverComponent } from './average-hover/average-hover.component';
+
 //Services
 import { AppService } from './services/app.service';
-import { GraphsComponent } from './graphs/graphs.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
+    AuthComponent,
     GraphsComponent,
+    AverageHoverComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,7 @@ import { GraphsComponent } from './graphs/graphs.component';
     BsDropdownModule.forRoot(),
     ReactiveFormsModule,
   ],
-  providers: [AppService],
+  providers: [AppService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

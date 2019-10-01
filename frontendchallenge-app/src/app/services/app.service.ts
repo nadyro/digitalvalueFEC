@@ -12,10 +12,15 @@ export class AppService {
   api_url = "/assets/api";
   api_categories = "/categories.json";
   @Output() volumeIdEmitter: EventEmitter<any> = new EventEmitter();
-
+  @Output() averageGraph: EventEmitter<any> = new EventEmitter();
+  
   data: {};
   constructor(private http: HttpClient) { }
 
+  emitAverageData(object){
+    this.data = {element: object.element, volumes_per_months: object.volumes_per_months};
+    this.averageGraph.emit(this.data);
+  }
   emitVolumeId(object) {
     this.data = { volumeId: object.volumeId, category: object.category };
     this.volumeIdEmitter.emit(this.data);

@@ -21,6 +21,33 @@ export class GraphsComponent implements OnInit {
   volumes_height: Array<any> = new Array();
   volumes_per_year: Array<any> = new Array();
   volumes_sum_year: Array<any> = new Array();
+  volumes_per_months: Array<any> = new Array();
+
+
+  flushGraph(element) {
+    this.flushArray(this.volumes_per_months);
+    this.volumes_per_months = null;
+    var emptyGraph = { element: element, volumes_per_months: this.volumes_per_months };
+    this.appService.emitAverageData(emptyGraph);
+  }
+
+  displayAverage(element, volume, volumeIdSelected) {
+    this.flushArray(this.volumes_per_months);
+    var month = this.arrayMonths.indexOf(volume.month) + 1;
+    var indexMonth = 0;
+    this.appService.getVolumeById(volumeIdSelected).subscribe(res => {
+      res.forEach(element => {
+        indexMonth = element.timespan.split('-')[1] * 1;
+        if (indexMonth == month) {
+          element.month = indexMonth - 1;
+          element.timespan = element.timespan.split('-')[0];
+          this.volumes_per_months.push(element);
+        }
+      });
+      var averageGraphData = { element: element, volumes_per_months: this.volumes_per_months };
+      this.appService.emitAverageData(averageGraphData);
+    });
+  }
 
   flushArray(array: Array<any>) {
     array.splice(0, array.length);

@@ -11,6 +11,10 @@
     border-radius: 5px;
      background: linear-gradient(145deg, #27e5b4, #af36ad);
 }
+.volumes_container h5 span {
+    padding: 1px !important;
+    white-space: nowrap;
+}
 .volumes_container_years{
     border-left: solid;
 }
@@ -76,7 +80,7 @@
     border-top: solid;
     border-width: 1px;
 }
-.volumes_container h3 {
+.volumes_container h5 {
     transform: rotateX(180deg) translateY(100%) translateX(-50%);
     position: absolute;
     left: 50%;
@@ -169,7 +173,7 @@
     border-left: solid;
     border-width: 1px;
 }
-@media screen and (min-width: 576px) and (max-width: 1199.98px) {
+@media screen and (min-width: 576px) and (max-width: 1585.98px) {
     .home {
       display:block;
       clear:both;
@@ -181,7 +185,7 @@
     .volumes_container_per_year{
         position: unset;
     }
-    .volumes_container h3{
+    .volumes_container h5{
         transform: rotateX(180deg);
         position: unset;
     }

@@ -11,10 +11,8 @@ export class CategoriesComponent implements OnInit {
   constructor(private appService: AppService) { }
 
   arrayCategories = new Array();
-  volumeIdEmitted = 0;
 
   sendVolumeId(element) {
-    this.volumeIdEmitted = 1;
     var obj = { volumeId: element.id, category: element.name };
     this.appService.emitVolumeId(obj);
   }
