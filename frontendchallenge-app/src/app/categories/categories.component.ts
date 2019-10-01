@@ -10,10 +10,15 @@ export class CategoriesComponent implements OnInit {
 
   constructor(private appService: AppService) { }
 
-  firstLevelIndexCategories = 0;
-  secondLevelIndexCategories = 0;
-  thirdLevelIndexCategories = 0;
   arrayCategories = new Array();
+  volumeIdEmitted = 0;
+
+  sendVolumeId(element) {
+    this.volumeIdEmitted = 1;
+    var obj = { volumeId: element.id, category: element.name };
+    this.appService.emitVolumeId(obj);
+  }
+
   ngOnInit() {
     var i = 0;
     this.appService.getAllCategories().subscribe(res => {
@@ -21,22 +26,6 @@ export class CategoriesComponent implements OnInit {
         this.arrayCategories[i] = element;
         i++;
       });
-      /*Categories as such :
-                                        Categories
-      Brands                              Products                            Others
-Ind#1     Ind#2     Ind#3         Typ#1       Typ#2     Typ#3       Cat#1     Cat#2     Cat#3
-Id  Name  Id  Name  Id  Name      Id  Name    Id  Name  Id  Name    Id  Name  Id  Name  Id  Name
-      */
-      this.arrayCategories.forEach(element => {
-        element.children.forEach(elem => {
-          elem.children.forEach(elmnt => {
-            console.log(elmnt);
-            this.thirdLevelIndexCategories++;
-          });
-          this.secondLevelIndexCategories++;
-        });
-        this.firstLevelIndexCategories++;
-      })
     })
   }
 

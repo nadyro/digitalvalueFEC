@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,16 @@ import { map, catchError } from 'rxjs/operators';
 export class AppService {
 
   api_url = "/assets/api";
-  api_current_level = "/volumes-0.json";
   api_categories = "/categories.json";
+  @Output() volumeIdEmitter: EventEmitter<any> = new EventEmitter();
+
+  data: {};
   constructor(private http: HttpClient) { }
 
+  emitVolumeId(object) {
+    this.data = { volumeId: object.volumeId, category: object.category };
+    this.volumeIdEmitter.emit(this.data);
+  }
   getVolumeById(id): Observable<any> {
     return this.http.get(this.api_url + '/volumes-' + id + '.json').pipe(map(res => {
       return (res);
@@ -20,11 +27,6 @@ export class AppService {
   }
   getAllCategories(): Observable<any> {
     return this.http.get(this.api_url + this.api_categories).pipe(map(res => {
-      return (res);
-    }));
-  }
-  getFirstVolume(): Observable<any> {
-    return this.http.get(this.api_url + this.api_current_level).pipe(map(res => {
       return (res);
     }));
   }

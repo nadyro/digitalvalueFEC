@@ -1,11 +1,36 @@
-<div class="home_categories">
-    <div *ngFor="let entities of arrayCategories">
-        {{entities.name}}
-        <div *ngFor="let categories of entities.children">
-            {{categories.name}}
-            <div *ngFor="let category of categories.children">
-                {{category.name}}
-            </div>
-        </div>
+<div class="title">
+    <h2>
+        Google's Original Dataviz
+    </h2>
+</div>
+<div class="categories_volumes">
+
+    <div class="home col-xl-4 col-lg-12 col-md-12 col-sm-12">
+        <h5 class="categories_title">
+            Categories of the online demand
+        </h5>
+        <accordion isAnimated="true" closeOthers="true">
+
+            <accordion-group #entitiesBloc class="entities_blocs" *ngFor="let entities of arrayCategories">
+                <h4 (click)="sendVolumeId(entities)" id="{{entities.id}}" accordion-heading>
+                    {{entities.name}}
+                </h4>
+                <accordion isAnimated="true" closeOthers="true">
+                    <accordion-group *ngFor="let categories of entities.children" [panelClass]="clickable">
+                        <h5 (click)="sendVolumeId(categories)" id="{{categories.id}}" accordion-heading>
+                            {{categories.name}}
+                        </h5>
+                        <div *ngFor="let category of categories.children">
+                            <p class="category_name" #categoryBloc (click)="sendVolumeId(category)" id="{{category.id}}">
+                                {{category.name}}
+                            </p>
+                        </div>
+                    </accordion-group>
+                </accordion>
+            </accordion-group>
+        </accordion>
+    </div>
+    <div class="home volume_graphs col-xl-8 col-lg-12 col-md-12 col-sm-12">
+        <app-graphs></app-graphs>
     </div>
 </div>
