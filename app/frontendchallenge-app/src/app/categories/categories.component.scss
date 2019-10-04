@@ -1,0 +1,76 @@
+.home_categories{
+    text-align: center;
+}
+.categories_title{
+    text-align: center;
+}
+.entities_blocs h4:hover, .entities_blocs h5:hover{
+    text-decoration: underline;
+}
+.category_name{
+    cursor: pointer;
+}
+.blocs{
+    display: inline-grid !important;
+}
+
+.title{
+    text-align: center;
+    color: grey;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.categories_volumes{
+    text-align: center;
+}
+.home{
+    position: relative;
+    display: inline-block;
+    margin-top: 50px;
+}
+.home h5{
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: left;
+}
+.home h5 span{
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+     background: linear-gradient(145deg, #27e5b4, #af36ad);
+}
+.header{
+    text-align: center;
+    height: 50px;
+}
+.header_element{
+    display: inline-block;
+}
+.signin, .signup{
+    cursor: pointer;
+}
+.header_element p{
+    margin: 0;
+}
+.volume_graphs{
+    float: right;
+}
+@media screen and (min-width: 576px) and (max-width: 1199.98px) {
+    .home {
+      display:block;
+      clear:both;
+    }
+    .volumes_container{
+        display: block;
+        clear: both;
+    }
+    .volumes_container_per_year{
+        position: unset;
+    }
+    .volumes_container h3{
+        transform: rotateX(180deg);
+        position: unset;
+    }
+  }
+  

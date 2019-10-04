@@ -1,0 +1,14 @@
+
+.header{
+    text-align: center;
+    height: 50px;
+}
+.header_element{
+    display: inline-block;
+}
+.signin, .signup{
+    cursor: pointer;
+}
+.header_element p{
+    margin: 0;
+}
