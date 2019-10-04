@@ -20,7 +20,7 @@
                 <p>0</p>
             </div>
 
-            <div #volumes_year (dblclick)="selectPeriod(volumes_year)" (click)="appendDetailedVolumes(volumes_year)" id="{{yearVolume.index}}"
+            <div #volumes_year (click)="appendDetailedVolumes(volumes_year)" id="{{yearVolume.index}}"
                 class="volumes" *ngFor="let yearVolume of volumes_sum_year" [style.height.px]="yearVolume.sum / 5000">
                 <div class="overlay"></div>
                 <p class="volumeYear">{{yearVolume.year}}</p>

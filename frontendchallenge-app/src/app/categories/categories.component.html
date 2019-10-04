@@ -10,24 +10,55 @@
             Categories of the online demand
         </h5>
         <accordion isAnimated="true" closeOthers="true">
-
-            <accordion-group #entitiesBloc class="entities_blocs" *ngFor="let entities of arrayCategories">
-                <h4 (click)="sendVolumeId(entities)" id="{{entities.id}}" accordion-heading>
-                    {{entities.name}}
-                </h4>
-                <accordion isAnimated="true" closeOthers="true">
-                    <accordion-group *ngFor="let categories of entities.children" [panelClass]="clickable">
-                        <h5 (click)="sendVolumeId(categories)" id="{{categories.id}}" accordion-heading>
-                            {{categories.name}}
-                        </h5>
-                        <div *ngFor="let category of categories.children">
-                            <p class="category_name" #categoryBloc (click)="sendVolumeId(category)" id="{{category.id}}">
-                                {{category.name}}
-                            </p>
+            <div *ngFor="let entities of arrayCategories">
+                <accordion-group #entitiesBloc class="entities_blocs" *ngIf="entities.isopen" isOpen="true">
+                    <h4 (click)="sendVolumeId(entities, 1)" id="{{entities.id}}" accordion-heading>
+                        {{entities.name}}
+                    </h4>
+                    <accordion isAnimated="true" closeOthers="true">
+                        <div *ngFor="let categories of entities.children">
+                            <accordion-group *ngIf="categories.isopen" isOpen="true">
+                                <h5 (click)="sendVolumeId(categories, 2)" id="{{categories.id}}" accordion-heading>
+                                    {{categories.name}}
+                                </h5>
+                                <div *ngFor="let category of categories.children">
+                                    <p class="category_name" #categoryBloc (click)="sendVolumeId(category, 3)" id="{{category.id}}">
+                                        {{category.name}}
+                                    </p>
+                                </div>
+                            </accordion-group>
+                            <accordion-group *ngIf="!categories.isopen">
+                                <h5 (click)="sendVolumeId(categories, 2)" id="{{categories.id}}" accordion-heading>
+                                    {{categories.name}}
+                                </h5>
+                                <div *ngFor="let category of categories.children">
+                                    <p class="category_name" #categoryBloc (click)="sendVolumeId(category, 3)" id="{{category.id}}">
+                                        {{category.name}}
+                                    </p>
+                                </div>
+                            </accordion-group>
                         </div>
-                    </accordion-group>
-                </accordion>
-            </accordion-group>
+                    </accordion>
+                </accordion-group>
+                <accordion-group #entitiesBloc class="entities_blocs" *ngIf="!entities.isopen">
+                    <h4 (click)="sendVolumeId(entities, 1)" id="{{entities.id}}" accordion-heading>
+                        {{entities.name}}
+                    </h4>
+                    <accordion isAnimated="true">
+                        <accordion-group *ngFor="let categories of entities.children">
+                            <h5 (click)="sendVolumeId(categories, 2)" id="{{categories.id}}" accordion-heading>
+                                {{categories.name}}
+                            </h5>
+                            <div *ngFor="let category of categories.children">
+                                <p class="category_name" #categoryBloc (click)="sendVolumeId(category, 3)" id="{{category.id}}">
+                                    {{category.name}}
+                                </p>
+                            </div>
+                        </accordion-group>
+                    </accordion>
+                </accordion-group>
+            </div>
+
         </accordion>
     </div>
     <div class="home volume_graphs col-xl-8 col-lg-12 col-md-12 col-sm-12">

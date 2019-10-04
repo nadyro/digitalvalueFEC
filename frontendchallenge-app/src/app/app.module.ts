@@ -18,6 +18,7 @@ import { AverageHoverComponent } from './average-hover/average-hover.component';
 //Services
 import { AppService } from './services/app.service';
 import { AuthService } from './services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { AuthService } from './services/auth.service';
     BsDropdownModule.forRoot(),
     ReactiveFormsModule,
   ],
-  providers: [AppService, AuthService],
+  providers: [AppService, AuthService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

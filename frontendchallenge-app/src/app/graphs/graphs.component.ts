@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../services/app.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-graphs',
@@ -8,7 +9,7 @@ import { AppService } from '../services/app.service';
 })
 export class GraphsComponent implements OnInit {
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private cookieService: CookieService) { }
 
   indexToDisplayVolumes = 0;
   indexMonths = 0;
@@ -18,6 +19,7 @@ export class GraphsComponent implements OnInit {
   maxVolumesYears = 0;
   maxVolumesPerYear = 0;
   volumeIdSelected = "";
+  tmpFirstLevelCategory:any;
   volumes_height: Array<any> = new Array();
   volumes_per_year: Array<any> = new Array();
   volumes_sum_year: Array<any> = new Array();
@@ -56,6 +58,8 @@ export class GraphsComponent implements OnInit {
   appendDetailedVolumes(volume_element) {
     this.maxVolumesPerYear = 0;
     this.indexToDisplayVolumes = volume_element.id;
+    this.cookieService.set("yearSelected", this.indexToDisplayVolumes + '');
+    console.log(this.cookieService.getAll());    
     this.volumes_per_year[this.indexToDisplayVolumes].volumes_height.forEach(element => {
       if (this.maxVolumesPerYear < element.volume) {
         this.maxVolumesPerYear = element.volume;
@@ -114,6 +118,10 @@ export class GraphsComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.tmpFirstLevelCategory = this.cookieService.get("firstLevelCategory");
+    // if (this.tmpFirstLevelCategory * 1 > 0){
+    //   this.volumesSubscription(this.tmpFirstLevelCategory);
+    // }
     this.appService.volumeIdEmitter.subscribe(res => {
       this.flushArray(this.volumes_height);
       this.flushArray(this.volumes_per_year);
