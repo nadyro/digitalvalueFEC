@@ -117,10 +117,6 @@ export class GraphsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.tmpFirstLevelCategory = this.cookieService.get("firstLevelCategory");
-    // if (this.tmpFirstLevelCategory * 1 > 0){
-    //   this.volumesSubscription(this.tmpFirstLevelCategory);
-    // }
     this.appService.volumeIdEmitter.subscribe(res => {
       this.flushArray(this.volumes_height);
       this.flushArray(this.volumes_per_year);
