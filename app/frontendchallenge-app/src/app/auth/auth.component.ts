@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthComponent implements OnInit {
 
   constructor(public authService: AuthService, private router: Router, private cookieService: CookieService) { }
-
+  errorMessage: "";
   authLoginForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -20,11 +20,13 @@ export class AuthComponent implements OnInit {
 
   onSubmit(id) {
     this.authService.log(this.authLoginForm.value).subscribe(res => {
-      this.router.navigate(['/categories']);
+      if (res['loggedIn'])
+        this.router.navigate(['/categories']);
+      else
+      this.errorMessage = res['message'];
     })
   }
   ngOnInit() {
-    this.cookieService.deleteAll();
   }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -21,7 +21,7 @@ export class AuthService {
         this.userProfile = profile;
         this.authenticated = true;
     }
-    
+
     get isLoggedIn(): boolean {
         return Date.now() < this.expiresAt && this.authenticated;
     }
@@ -34,22 +34,28 @@ export class AuthService {
             return (res);
         })))
     }
+    addUser(formGroup): Observable<any> {
+        return (this.http.post(this.api_url + '/addUser', formGroup).pipe(map(res => {
+            return (res);
+        })));
+    }
     log(formGroup): Observable<any> {
-        var obj = { formdata: formGroup };
         this.cookieService.set("username", formGroup.email);
-        return (this.http.post(this.api_url + '/addUser', obj).pipe(map(res => {
-            if (res['userCookies']) {
-                this.cookieService.set("firstLevelCategory", res['userCookies'].firstLevelCategory);
-                this.cookieService.set("firstLevelCategoryName", res['userCookies'].firstLevelCategoryName);
-                this.cookieService.set("secondLevelCategory", res['userCookies'].secondLevelCategory);
-                this.cookieService.set("secondLevelCategoryName", res['userCookies'].secondLevelCategoryName);
-                this.cookieService.set("thirdLevelCategory", res['userCookies'].thirdLevelCategory);
-                this.cookieService.set("thirdLevelCategoryName", res['userCookies'].thirdLevelCategoryName);
-                this.cookieService.set("steps", res['userCookies'].steps);
-                this.cookieService.set("yearSelected", res['userCookies'].yearSelected);
+        return (this.http.post(this.api_url + '/fetchUserAndCookies', formGroup).pipe(map(res => {
+            if (res['loggedIn']) {
+                if (res['userCookies']) {
+                    this.cookieService.set("firstLevelCategory", res['userCookies'].firstLevelCategory);
+                    this.cookieService.set("firstLevelCategoryName", res['userCookies'].firstLevelCategoryName);
+                    this.cookieService.set("secondLevelCategory", res['userCookies'].secondLevelCategory);
+                    this.cookieService.set("secondLevelCategoryName", res['userCookies'].secondLevelCategoryName);
+                    this.cookieService.set("thirdLevelCategory", res['userCookies'].thirdLevelCategory);
+                    this.cookieService.set("thirdLevelCategoryName", res['userCookies'].thirdLevelCategoryName);
+                    this.cookieService.set("steps", res['userCookies'].steps);
+                    this.cookieService.set("yearSelected", res['userCookies'].yearSelected);
+                }
+                this._setSession(formGroup.email);
+                this.router.navigate(['/']);
             }
-            this._setSession(formGroup.email);
-            this.router.navigate(['/']);
             return (res);
         })))
     }
