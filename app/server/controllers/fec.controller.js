@@ -24,13 +24,17 @@ exports.addUser = async function (req, res) {
         });
         db.once('open', function (success) {
             var collection = db.collection('users');
+            var message = "";
             var docs = collection.find({ username: params.email }).toArray(function (err, docs) {
                 if (docs.length >= 1) {
                     var userCookies = docs[0]['cookies'];
-                    console.log("User found!");
+                    if (userCookies)
+                        message = "Cookies fetched successfully";
+                    else
+                        message = "User connected";
                     return (res.status(202).json({
                         status: 202,
-                        message: 'Cookies fetched successfully.',
+                        message: message,
                         userCookies: userCookies
                     }))
                 }
@@ -68,13 +72,10 @@ exports.saveUserCookies = async function (req, res) {
         });
         db.once('open', function (success) {
             var collection = db.collection('users');
-            console.log("Cookies to save.");
-            console.log(userCookies);
             var docs = collection.find({ username: userCookies.username }).toArray(function (err, docs) {
                 if (docs.length >= 1) {
                     userID = docs[0]['_id'];
                     collection.updateOne({ _id: ObjectId(userID) }, { $set: { cookies: userCookies } }, function (err, result) {
-                        console.log(result);
                         return (res.status(202).json({
                             status: 202,
                             message: '',

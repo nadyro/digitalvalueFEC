@@ -21,11 +21,7 @@ export class AuthService {
         this.userProfile = profile;
         this.authenticated = true;
     }
-    checkApi() {
-        return (this.http.get(this.api_url + '/checkApi').pipe(map(res => {
-            console.log(res);
-        })))
-    }
+    
     get isLoggedIn(): boolean {
         return Date.now() < this.expiresAt && this.authenticated;
     }
@@ -35,8 +31,6 @@ export class AuthService {
     logoutAndSave(cookies_user) {
         var obj = { userCookies: cookies_user };
         return (this.http.post(this.api_url + '/saveUserCookies', obj).pipe(map(res => {
-            console.log(this.cookieService.getAll());
-            console.log(res);
             return (res);
         })))
     }

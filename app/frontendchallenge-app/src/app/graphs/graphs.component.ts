@@ -59,7 +59,6 @@ export class GraphsComponent implements OnInit {
     this.maxVolumesPerYear = 0;
     this.indexToDisplayVolumes = volume_element.id;
     this.cookieService.set("yearSelected", this.indexToDisplayVolumes + '');
-    console.log(this.cookieService.getAll());    
     this.volumes_per_year[this.indexToDisplayVolumes].volumes_height.forEach(element => {
       if (this.maxVolumesPerYear < element.volume) {
         this.maxVolumesPerYear = element.volume;

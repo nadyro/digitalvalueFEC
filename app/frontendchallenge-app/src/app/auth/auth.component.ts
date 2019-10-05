@@ -20,7 +20,6 @@ export class AuthComponent implements OnInit {
 
   onSubmit(id) {
     this.authService.log(this.authLoginForm.value).subscribe(res => {
-      console.log(res);
       this.router.navigate(['/categories']);
     })
   }
