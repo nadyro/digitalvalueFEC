@@ -1,7 +1,7 @@
 /dist
 /tmp
 /out-tsc
-./data
+./app/server/data
 # dependencies
 node_modules
 frontendchallenge-app/node_modules

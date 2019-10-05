@@ -1,6 +1,6 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from './services/app.service';
-import { AuthService } from './services/auth.service'; 
+import { AuthService } from './services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -13,13 +13,13 @@ export class AppComponent implements OnInit {
   constructor(private appService: AppService, private authService: AuthService, private cookieService: CookieService) {
 
   }
-  logout(){
+  logout() {
     this.authService.logoutAndSave(this.cookieService.getAll()).subscribe(res => {
-      console.log(res);
+      this.cookieService.deleteAll();
     })
     this.authService.logout;
   }
   ngOnInit() {
-    
+
   }
 }

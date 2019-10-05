@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -19,6 +18,7 @@ import { AverageHoverComponent } from './average-hover/average-hover.component';
 import { AppService } from './services/app.service';
 import { AuthService } from './services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthSubComponent } from './auth-sub/auth-sub.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { CookieService } from 'ngx-cookie-service';
     AuthComponent,
     GraphsComponent,
     AverageHoverComponent,
+    AuthSubComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +35,6 @@ import { CookieService } from 'ngx-cookie-service';
     HttpClientModule,
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
-    BsDropdownModule.forRoot(),
     ReactiveFormsModule,
   ],
   providers: [AppService, AuthService, CookieService],
