@@ -24,6 +24,31 @@ var userSchema = new Schema({
 });
 var User = mongoose.model('User', userSchema);
 
+exports.getUser = async function (req, res) {
+    try {
+        var db = db_connect();
+        db.on('error', function (err) {
+            console.error(err);
+        });
+        db.once('open', function (success) {
+            var collection = db.collection('users');
+            var docs = collection.find({ email: req.query.userEmail }).toArray(function (err, docs) {
+                var passwd = docs[0]['password'];
+                docs[0]['password'] = '';
+                if (docs.length > 0) {
+                    return (res.status(202).json({
+                        status: 200,
+                        message: "",
+                        data: docs[0]
+                    }))
+                }
+            })
+        });
+    }
+    catch (e) {
+        throw Error(e);
+    }
+}
 exports.addUser = async function (req, res) {
     try {
         var db = db_connect();
@@ -87,7 +112,7 @@ exports.fetchUserAndCookies = async function (req, res) {
             var docs = collection.find({ email: req.body.email }).toArray(function (err, docs) {
                 if (docs.length == 0) {
                     return (res.status(202).json({
-                        status: 300,
+                        status: 200,
                         message: "No user found.",
                         loggedIn: 0
                     }))

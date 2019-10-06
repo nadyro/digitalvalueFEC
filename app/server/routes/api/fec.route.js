@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var apiConnectController = require("../../controllers/fec.controller");
+var fecConnectController = require("../../controllers/fec.controller");
+var fecProfileController = require("../../controllers/fecprofile.controller");
 
-router.post("/addUser", apiConnectController.addUser);
-router.post("/fetchUserAndCookies", apiConnectController.fetchUserAndCookies);
-router.post("/saveUserCookies", apiConnectController.saveUserCookies);
+router.post("/addUser", fecConnectController.addUser);
+router.post("/fetchUserAndCookies", fecConnectController.fetchUserAndCookies);
+router.post("/saveUserCookies", fecConnectController.saveUserCookies);
+
+router.get("/getUser", fecProfileController.getUser);
+router.put("/updateUser", fecProfileController.updateUser);
+
 module.exports = router;

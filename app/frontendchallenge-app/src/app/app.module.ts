@@ -13,12 +13,14 @@ import { CategoriesComponent } from './categories/categories.component';
 import { AuthComponent } from './auth/auth.component';
 import { GraphsComponent } from './graphs/graphs.component';
 import { AverageHoverComponent } from './average-hover/average-hover.component';
+import { AuthSubComponent } from './auth-sub/auth-sub.component';
+import { ProfileComponent } from './profile/profile.component';
 
 //Services
 import { AppService } from './services/app.service';
 import { AuthService } from './services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
-import { AuthSubComponent } from './auth-sub/auth-sub.component';
+import { ProfileService } from './services/profile.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { AuthSubComponent } from './auth-sub/auth-sub.component';
     GraphsComponent,
     AverageHoverComponent,
     AuthSubComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import { AuthSubComponent } from './auth-sub/auth-sub.component';
     AccordionModule.forRoot(),
     ReactiveFormsModule,
   ],
-  providers: [AppService, AuthService, CookieService],
+  providers: [AppService, AuthService, CookieService, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

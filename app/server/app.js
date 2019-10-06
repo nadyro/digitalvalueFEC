@@ -5,8 +5,12 @@ var app = express();
 var http = require('http').createServer(app);
 var api = require('./routes/api.route');
 var cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+
 var path = require('path');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
