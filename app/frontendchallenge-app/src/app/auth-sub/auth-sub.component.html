@@ -1,29 +1,20 @@
 <div class="auth container">
-    <div class="auth_children subscribe">
+    <div class="auth_children subscribe col-lg-12 col-md-12 col-sm-12">
         <h4>First connection ?</h4>
         <h5>Subscribe and start your journey !</h5>
-        <h6>{{formatted_message}}</h6>
         <div class="form_errors">
             <div *ngIf="(name.invalid && (name.touched || name.dirty)) || (surname.invalid && (surname.touched || surname.dirty))" class="form_error">
-                <h6>Warning! Your attention is required here!</h6>
-                <div>
-                    Don't go Rogue, we need to identify our next Super star !
-                </div>
                 <div *ngIf="(name.invalid && name.errors.pattern) || (surname.invalid && surname.errors.pattern)">
                     As Cyborgs don't exist yet, (questionnable, we agree), please use only Letters for your Name and Last Name.
                 </div>
             </div>
             <div *ngIf="email.invalid" class="form_error">
-                <h6>Warning! Your attention is required here!</h6>
                 <div *ngIf="email.errors.email">
                     As contacting you will be a critical process for your experience here, we kindly demand that you provide a valid Email Address.
                 </div>
             </div>
             <div *ngIf="password.invalid" class="form_error">
                 <h6>Warning! Your attention is required here!</h6>
-                <div *ngIf="password.invalid && password.touched">
-                    You don't want anybody to get into your account, right ?
-                </div>
                 <div *ngIf="password.invalid && password.errors.pattern">
                     <ul>
                         Your password must follow these prerequesites :
@@ -46,58 +37,39 @@
                     </ul>
                 </div>
             </div>
-            <div *ngIf="birthday.invalid && (birthday.touched || birthday.dirty)" class="form_error">
-                <h6>Warning! Your attention is required here!</h6>
-                <div>
-                    Oh come on... ! Everybody has to say it !
-                </div>
-            </div>
-            <div *ngIf="gender.invalid && (gender.touched || gender.dirty)" class="form_error">
-                <h6>Warning! Your attention is required here!</h6>
-                <div>
-                    The critical point regarding the success of an application is the way it serves its users. Knowing our users's gender is
-                    entirely part of it.
-                </div>
-            </div>
             <div *ngIf="gender_specified.invalid && (gender_specified.touched || gender_specified.dirty)" class="form_error">
-                <h6>Warning! Your attention is required here!</h6>
                 <div *ngIf="gender_specified.invalid && gender_specified.errors.pattern">
                     Please use only letters to describe your gender.
                 </div>
             </div>
-            <div *ngIf="gender_validator == 2">
-                <h6>Warning! Your attention is required here!</h6>
-                The critical point regarding the success of an application is the way it serves its users. Knowing our users's gender is
-                entirely part of it.
-            </div>
             <div *ngIf="address.invalid && address.errors.pattern" class="form_error">
-                <h6>Warning! Your attention is required here!</h6>
                 <div *ngIf="address.invalid && address.errors.pattern">
-                    Please enter a valid address. Don't worry, we're not into swatting.
+                    Please enter a valid address.
                 </div>
             </div>
             <div *ngIf="zip.invalid  && zip.errors.pattern" class="form_error">
-                <h6>Warning! Your attention is required here!</h6>
                 <div *ngIf="zip.invalid && zip.errors.pattern">
-                    Come on... the Zip Code must be only numbers. Everybody knows that for lord's sake.
+                    Zip Code must contain only numbers.
                 </div>
             </div>
             <div *ngIf="city.invalid  && city.errors.pattern" class="form_error">
-                <h6>Warning! Your attention is required here!</h6>
                 <div *ngIf="city.invalid && city.errors.pattern">
                     Human ! Have you ever seen a city name with such characters ?!
                 </div>
             </div>
             <div *ngIf="username.invalid && (username.touched || username.dirty)" class="form_error">
                 <h6>Warning! Your attention is required here!</h6>
-                Ok, focus please. We know that you may want to use every bit of your genius brain to design an incredibly elaborated username...
-                Okay ? We know it. You should also know that there is a very special place for people who choose
-                <b>
-                    <i>too elaborated usernames</i>
-                </b>.
-                <div *ngIf="username.invalid && username.errors.pattern">
-                    Dear future hell dweller, you just tried a combination of characters that we specifically banned. You shall try again.
-                </div>
+                <ul>
+                    Your username must follow these prerequesites :
+                    <li>
+                        Contain at least
+                        <b>one letter or ["-" and " ' "]</b>
+                    </li>
+                    <li>
+                        Can't contain
+                        <b>special characters</b>
+                    </li>
+                </ul>
             </div>
         </div>
         <form [formGroup]="authSubscribeForm" (ngSubmit)="onSubmit(1)">
