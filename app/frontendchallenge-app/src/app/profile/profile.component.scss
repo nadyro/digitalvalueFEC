@@ -1,0 +1,37 @@
+.activity, .profile{
+    display: inline-block;
+}
+.activity{
+    float: right;
+}
+.categories_selected{
+    text-align: left;
+}
+.labels_selected{
+    text-align: center;
+}
+.names_selected{
+    text-align: right;
+}
+.popupValidation{
+    transition: 1s;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    transform: translateX(-50%);
+    left: 50%;
+    border-radius: 10px;
+    color: white;
+    margin-top: -100px;
+    width: 300px;
+    text-align: center;
+    padding: 20px 0;
+}
+.wrong_password{
+    background: rgb(255, 100, 100);
+    margin-top: 0px;
+}
+.successfulValidation{
+    background: rgb(0, 160, 0);
+    margin-top: 0px;
+}

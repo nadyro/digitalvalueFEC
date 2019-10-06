@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="popupValidation {{classAttribute}}">
+        {{profileMessage}}
+    </div>
+    <div class="profile col-lg-6 col-md-6 col-sm-6">
+        <h2>Profile</h2>
+        <h4>
+            {{name}} {{surname}}
+        </h4>
+        <div class="profileCategories form_credentials">
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit(1)">
+                <div class="form-group identity col-md-12 col-sm-12">
+                    <label class="">
+                        Username :
+                        <input #val type="text" formControlName="username" value="{{profileusername}}" class="form-control auth_child">
+                    </label>
+                </div>
+                <div class="form-group identity col-md-12 col-sm-12">
+                    <label class="">
+                        Email :
+                        <input type="text" formControlName="email" value="{{profileemail}}" class="form-control auth_child">
+                    </label>
+                </div>
+                <div class="form-group identity col-md-12 col-sm-12">
+                    <label class="">
+                        Password :
+                        <input type="password" formControlName="password" class="form-control auth_child" placeholder="Password">
+                    </label>
+                </div>
+                <div class="change_password">
+                    <h5>Change your password</h5>
+                </div>
+                <div class="form-group identity col-md-12 col-sm-12">
+                    <label class="">
+                        New password :
+                        <input type="password" formControlName="new_password" class="form-control auth_child" placeholder="New Password">
+                    </label>
+                    <div *ngIf="new_password.invalid && new_password.errors.pattern">
+                        <ul>
+                            Your password must :
+                            <li>
+                                Contain at least
+                                <b>one upper case letter</b>
+                            </li>
+                            <li>
+                                Contain at least
+                                <b>one lower case letter</b>
+                            </li>
+                            <li>
+                                Contain at least
+                                <b>one number</b>
+                            </li>
+                            <li>
+                                Contain at least
+                                <b>one special character</b>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group identity col-md-12 col-sm-12">
+                    <button type="submit" [disabled]="!profileForm.valid" class="btn btn-primary auth_submit">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="activity col-lg-6 col-md-6 col-sm-6">
+        <h2>Latest activity</h2>
+        <div class="activitCategories" *ngIf="activity">
+            <div class="categories_selected" *ngIf="activity.firstLevelCategoryName">
+                <h6>Category selected</h6>
+                <p>{{activity.firstLevelCategoryName}}</p>
+            </div>
+            <div class="labels_selected" *ngIf="activity.secondLevelCategoryName">
+                <h6>Labels</h6>
+                <p>{{activity.secondLevelCategoryName}}</p>
+            </div>
+            <div class="names_selected" *ngIf="activity.thirdLevelCategoryName">
+                <h6>Names</h6>
+                <p>{{activity.thirdLevelCategoryName}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
