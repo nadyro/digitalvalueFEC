@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AppComponent implements OnInit {
   title = 'G.O.D';
-  constructor(private appService: AppService, private authService: AuthService, private cookieService: CookieService) {
+  constructor(public appService: AppService, public authService: AuthService, public cookieService: CookieService) {
 
   }
   logout() {

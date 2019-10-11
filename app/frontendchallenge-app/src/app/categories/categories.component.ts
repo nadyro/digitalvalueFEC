@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor(private appService: AppService, private cookieService: CookieService) { }
+  constructor(public appService: AppService, public cookieService: CookieService) { }
 
   arrayCategories = new Array();
   firstLevelCategory: any;

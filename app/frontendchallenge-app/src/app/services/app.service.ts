@@ -15,7 +15,7 @@ export class AppService {
   @Output() averageGraph: EventEmitter<any> = new EventEmitter();
   
   data: {};
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
   emitAverageData(object){
     this.data = {element: object.element, volumes_per_months: object.volumes_per_months};

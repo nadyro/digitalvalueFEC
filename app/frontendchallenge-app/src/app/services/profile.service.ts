@@ -12,7 +12,7 @@ export class ProfileService {
     userProfile: any;
     authenticated: boolean;
 
-    constructor(private router: Router, private http: HttpClient, private cookieService: CookieService) {
+    constructor(public router: Router, public http: HttpClient, public cookieService: CookieService) {
     }
     port = 8080;
     api_url = "http://localhost:" + this.port + "/api/fecApi";

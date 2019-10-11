@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthSubComponent implements OnInit {
 
-  constructor(public authService: AuthService, private router: Router,) { }
+  constructor(public authService: AuthService, public router: Router,) { }
 
   gender_validator = 0;
   tooltip_validator = 0;

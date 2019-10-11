@@ -11,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(public authService: AuthService, private router: Router, private cookieService: CookieService) { }
+  constructor(public authService: AuthService, public router: Router, public cookieService: CookieService) { }
   errorMessage: "";
   authLoginForm = new FormGroup({
     email: new FormControl('', Validators.required),

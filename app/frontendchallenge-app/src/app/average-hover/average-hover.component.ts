@@ -8,7 +8,7 @@ import { AppService } from '../services/app.service';
 })
 export class AverageHoverComponent implements OnInit {
 
-  constructor(private appService: AppService) { }
+  constructor(public appService: AppService) { }
   arrayMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   element;
   maxValue = 0;

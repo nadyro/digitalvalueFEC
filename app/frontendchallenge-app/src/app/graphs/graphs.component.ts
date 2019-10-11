@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class GraphsComponent implements OnInit {
 
-  constructor(private appService: AppService, private cookieService: CookieService) { }
+  constructor(public appService: AppService, public cookieService: CookieService) { }
 
   indexToDisplayVolumes = 0;
   indexMonths = 0;

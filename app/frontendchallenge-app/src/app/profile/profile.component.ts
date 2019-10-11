@@ -13,7 +13,7 @@ import { timeout, take } from 'rxjs/operators';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService: AuthService, private cookieService: CookieService, private profileService: ProfileService) { }
+  constructor(public authService: AuthService, public cookieService: CookieService, public profileService: ProfileService) { }
   profileForm = new FormGroup({
     username: new FormControl('', [Validators.pattern(/^([a-zA-Z\d \xC0-\xF6\-œ\'\xF8-\xFF]{1,})$/)]),
     email: new FormControl('', [Validators.email]),
