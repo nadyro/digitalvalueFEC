@@ -15,7 +15,7 @@ export class ProfileService {
     constructor(public router: Router, public http: HttpClient, public cookieService: CookieService) {
     }
     port = 8081;
-    api_url = "http://localhost:" + this.port + "/api/fecApi";
+    api_url = "https://atlantean-depth-248321.appspot.com:" + this.port + "/api/fecApi";
     updateUser(formGroup):Observable<any>{
       var obj = {formGroup: formGroup, cookies: this.cookieService.getAll()};
       return (this.http.put(this.api_url + '/updateUser', obj).pipe(map(res => {
