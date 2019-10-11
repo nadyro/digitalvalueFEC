@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var ObjectId = require('mongodb').ObjectID;
 
 function db_connect() {
-    mongoose.connect('mongodb://localhost/fec', { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect('mongodb+srv://perion:Vkcgi18wbuf!@cluster0-0c5zu.gcp.mongodb.net/fec?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
     var db = mongoose.connection;
     return (db);
 }

@@ -14,7 +14,8 @@ export class AuthService {
 
     constructor(private router: Router, private http: HttpClient, private cookieService: CookieService) {
     }
-    api_url = "http://localhost:3000/api/fecApi";
+    port = 8080;
+    api_url = "http://localhost:" + this.port + "/api/fecApi";
 
     private _setSession(profile) {
         this.expiresAt = 10000 * 1000 + Date.now();
