@@ -34,7 +34,6 @@ app.use(express.static(__dirname + '/dist/'));
 const PORT = process.env.PORT || 8080;
 http.listen(PORT, function (request, response) {
     console.log(PORT);
->>>>>>> e3a76f8ec7228c1f8b291bda0d1a158149d3c3d4
     console.log("server is running");
 });
 
