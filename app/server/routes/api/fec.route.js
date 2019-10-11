@@ -6,7 +6,7 @@ var fecProfileController = require("../../controllers/fecprofile.controller");
 router.post("/addUser", fecConnectController.addUser);
 router.post("/fetchUserAndCookies", fecConnectController.fetchUserAndCookies);
 router.post("/saveUserCookies", fecConnectController.saveUserCookies);
-
+router.post("/testFec", fecConnectController.test);
 router.get("/getUser", fecProfileController.getUser);
 router.put("/updateUser", fecProfileController.updateUser);
 

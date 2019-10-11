@@ -24,6 +24,19 @@ var userSchema = new Schema({
 });
 var User = mongoose.model('User', userSchema);
 
+exports.test = async function (req, res) {
+    try {
+        console.log(req);
+        return (res.status(200).json({
+            message: "fdp",
+            status: 200
+        }))
+    }
+    catch (e){
+        throw Error(e);
+    }
+}
+
 exports.getUser = async function (req, res) {
     try {
         var db = db_connect();
