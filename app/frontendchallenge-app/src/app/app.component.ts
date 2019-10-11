@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   logout() {
     this.authService.logoutAndSave(this.cookieService.getAll()).subscribe(res => {
       this.cookieService.deleteAll();
+      location.reload();
+
     })
     this.authService.logout;
   }

@@ -31,7 +31,7 @@ app.use(express.static(__dirname + '/dist/'));
 //     res.status(err.status || 500);
 //     res.render('error');
 // });
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 http.listen(PORT, function (request, response) {
     console.log(PORT);
     console.log("server is running");
