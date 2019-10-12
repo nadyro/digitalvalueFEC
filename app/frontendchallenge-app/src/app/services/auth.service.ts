@@ -15,7 +15,7 @@ export class AuthService {
     constructor(public router: Router, public http: HttpClient, public cookieService: CookieService) {
     }
     port = 8081;
-    api_url = "http://localhost:" + this.port + "/api/fecApi";
+    api_url = "http://prostagma.fr/api/fecApi";
 
     public _setSession(profile) {
         this.expiresAt = 10000 * 1000 + Date.now();
